@@ -18,8 +18,83 @@ body {
 
 /* Row-Column Example */
 .row-column {
-  grid-template-columns: 40px 50px 1fr 50px 40px;
-  grid-template-rows: .25fr 100px .75fr;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5em 1fr 5em);
+}
+
+.row-column .item:nth-child(2n) {
+  background-color: rgba(0, 255, 0, 0.5);
+}
+
+.row-column .item:nth-child(2n + 1) {
+  background-color: rgba(202, 96, 96, 0.5);
+}
+
+/* Area Example */
+
+.areas > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+}
+.areas {
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: main-content 1fr main-content;
+  grid-template-areas: "header header" "Sidebar main" "Footer Footer";
+}
+
+.header {
+  background-color: cadetblue;
+  grid-area: header;
+  padding: 1em 0;
+}
+
+.sidebar {
+  background-color: darksalmon;
+  grid-area: sidebar;
+}
+
+.main {
+  background-color: wheat;
+  grid-area: main;
+}
+
+.footer {
+  background-color: mistyrose;
+  grid-area: footer;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (max-width: 60em ){
+.areas{
+  grid-template-areas:
+  "header header";
+  "sidebar main";html,
+body {
+  padding: 0;
+  border: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Molengo, sans-serif;
+}
+
+.container {
+  display: grid;
+  height: 100vh;
+}
+
+/* Row-Column Example */
+.item {
+  outline: 1px solid black;
+}
+
+.row-column {
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 5em 1fr 5em;
 }
 
 .row-column .item:nth-child(2n) {
@@ -39,24 +114,43 @@ body {
   font-size: 2em;
 }
 
+.areas {
+  grid-template-columns: min-content 1fr;
+  grid-template-rows: min-content 1fr min-content;
+  grid-template-areas: "header header" "sidebar main" "footer footer";
+}
+
 .header {
   background-color: cadetblue;
+  grid-area: header;
+  padding: 1em 0;
 }
 
 .sidebar {
   background-color: darksalmon;
+  grid-area: sidebar;
 }
 
 .main {
   background-color: wheat;
+  grid-area: main;
 }
 
 .footer {
   background-color: mistyrose;
+  grid-area: footer;
+  padding: 2em 0;
 }
 
 .hidden {
   display: none;
+}
+
+@media (max-width: 60em) {
+  .areas {
+    grid-template-areas: "header header" "main main" "sidebar sidebar"
+      "footer footer";
+  }
 }
 
 /* Form Example */
@@ -74,4 +168,107 @@ input[type="text"] {
   padding: 0.5em;
   border-radius: 5px;
   border: 0.5px solid grey;
+}
+
+.form {
+  width: 800px;
+  height: 450px;
+  border: 2px solid black;
+  grid-template-columns: min-content min-content 1fr;
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-areas: "firstNameLabel firstNameInput department"
+    "lastNameLabel  lastNameInput  department"
+    "addressLabel   addressInput   department"
+    "............   buttons        buttons";
+}
+
+label[for="firstName"] {
+  grid-area: firstNameLabel;
+}
+
+#firstName {
+  grid-area: firstNameInput;
+}
+
+label[for="lastName"] {
+  grid-area: lastNameLabel;
+}
+
+#lastName {
+  grid-area: lastNameInput;
+}
+
+label[for="address"] {
+  grid-area: addressLabel;
+}
+
+#address {
+  grid-area: addressInput;
+}
+
+.department {
+  grid-area: department;
+}
+
+.user-buttons {
+  grid-area: buttons;
+}
+  "footer footer";
+}
+}
+
+/* Form Example */
+
+.user-buttons > button {
+  background-color: darkred;
+  color: #fff;
+  border: 1px solid grey;
+  padding: 0.5em 1.25em;
+  border-radius: 5px;
+}
+
+input[type="text"] {
+  font-size: 1.5em;
+  padding: 0.5em;
+  border-radius: 5px;
+  border: 0.5px solid grey;
+}
+
+.form {
+  width: 800px;
+  height: 450px;
+  border: 2px solid black;
+  grid-template-columns: min-content min-content 1fr;
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-areas: 
+  "firstNameLabel firstNameLabel department"
+  "lastNameLabel  lastNameLabel  department"
+  "addressLabel   addressLabel   department"
+  "............   buttons        buttons";
+}
+
+label[for="firstName"]{
+}
+
+#firstName {
+grid-area: firstNameLabel;
+}
+Label [for="lastName"]{
+
+}
+#lastName{
+grid-area: lastNameLabel;
+}
+label [for="address"]{
+
+}
+#address {
+grid-area: addressLabel;
+}
+
+.department{
+grid-area: department;
+}
+.user-buttons{
+grid-area: buttons;
 }
